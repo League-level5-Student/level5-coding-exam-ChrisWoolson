@@ -24,8 +24,33 @@ public class CodingExamB {
 		 *    into one large String. The string will also state the file name and
 		 *    the line number for where each TODO was found. 
 		*/
+		String re = "";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileName));
+			
+			try {
+			
+				while(br !=null) {
+					String s = br.readLine();
+					if(s.contains("//TODO")) {
+						s+= fileName;
+						s+=br;
+						s+=re;
+					}
+				}
+				br.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return "";
+		
+		
+		return re;
 	}
 	
 	public static void main(String[] args) {
